@@ -1,0 +1,34 @@
+.rimac-header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px $wrapper-mobile-padding;
+  height: $mobile-header-height;
+  &__logo{
+    display: block;
+    width: 92px;
+  }
+
+  &__call-us{
+    display: block;
+
+    img {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 9px;
+      width: 16px;
+    }
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      font-family: $roboto;
+      font-size: 14px;
+    }
+  }
+}

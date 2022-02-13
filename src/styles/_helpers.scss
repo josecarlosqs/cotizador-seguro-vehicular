@@ -1,0 +1,32 @@
+// Background
+.bg-light {
+  background-color: $bg-light;
+}
+
+// Border
+.no-border {
+  border: none!important;
+}
+
+// Text
+.text-red {
+  color: $text-red;
+}
+
+// Responsive
+@media screen and (min-width: ($mobile-breakpoint + 1px)) {
+  .show-only-mobile {
+    display: none!important;
+  }
+
+  .text-red-desktop {
+    color: $text-red;
+  }
+}
+
+@media screen and (max-width: $mobile-breakpoint) {
+  .show-only-desktop {
+    display: none!important;
+  }
+
+}

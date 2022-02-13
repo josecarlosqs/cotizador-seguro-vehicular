@@ -1,0 +1,59 @@
+.home-screen {
+  .aside {
+    display: block;
+    background-color: $bg-light;
+    font-size: 16px;
+    padding: 0px $wrapper-mobile-padding;
+    padding-top: 40px;
+    padding-bottom: 56px;
+    position: relative;
+
+    &__text-new {
+      font-family: $lato;
+      font-weight: bold;
+      font-size: 0.625em;
+      line-height: 1.6em;
+      text-transform: uppercase;
+      color: $text-dark;
+      z-index: 2;
+      position: relative;
+    }
+    
+    &__title {
+      font-family: $lato;
+      font-weight: normal;
+      color: $text-dark;
+      font-size: 1.75em;
+      line-height: 1.29em;
+      letter-spacing: -0.6px;
+      margin-top: 8px;
+      z-index: 2;
+      position: relative;
+
+    }
+
+    &__text-description {
+      font-family: $roboto;
+      color: $text-light;
+      font-size: 0.875em;
+      line-height: 1.71em;
+      margin-top: 12px;
+      z-index: 2;
+      position: relative;
+    }
+
+    &__character {
+      display: block;
+      height: 240px;
+      width: auto;
+      position: absolute;
+      bottom: -20px;
+      right: -38px;
+      z-index: 1;
+    }
+  }
+
+  .main {
+
+  }
+}

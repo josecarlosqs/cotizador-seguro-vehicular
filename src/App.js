@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+
+import RimacHeader from "./components/rimac-header";
+
+import HomeScreen from './screens/Home';
+import ArmaTuPlanScreen from './screens/Arma_Tu_Plan';
+import GraciasScreen from './screens/Gracias';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+
+      {/* TODO: get from redux or something like that */}
+      <RimacHeader />
+      
+      <Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/arma-tu-plan" element={<ArmaTuPlanScreen />} />
+        <Route path="/gracias" element={<GraciasScreen />} />
+      </Routes>
     </div>
   );
 }

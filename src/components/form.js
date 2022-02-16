@@ -1,43 +1,80 @@
 import PropTypes from 'prop-types';
+import {
+  useState,
+  useRef
+} from 'react'
+
+import {ReactComponent as CheckIcon} from '../assets/ic_check.svg'
+import {ReactComponent as ChevronIcon} from '../assets/ic_chevron.svg'
 
 /**
  * 
  * @param function validationFn Executed when the form is submitted. Receives as argument the values serialized as JSON of the form. It can be an asynchronous function.
- * @param function onError Executed when validationFn returns a object with false or string entries.
+ * @param function onError Executed when validationFn returns a object with false.
  * @param function onSuccess Executed when validationFn only returns a true entries.
  * @returns ReactElement
  */
 const Form = ({validationFn, onError = () => {}, onSuccess, children}) => {
 
-  const getFormJSON = formNode => {
-    return Object.fromEntries(new FormData(formNode));
+  const formNode = useRef(null);
+
+  const getFormJSON = () => {
+    return Object.fromEntries(new FormData(formNode.current));
+  }
+
+  const resetInputErrors = () => {
+    const controls = formNode.current.querySelectorAll('.form__control');
+    [...controls].forEach(control => {
+      control.classList.remove('form__error');
+    });
+  }
+
+  const setInputError = inputName => {
+    formNode.current.querySelector(`[data-inputname=${inputName}]`).classList.add('form__error');
+  }
+
+  const markErrorOnFields = fieldsValidity => {
+    Object.keys(fieldsValidity).forEach(field => {
+      if (fieldsValidity[field] === false) {
+        setInputError(field);
+      }
+    })
+  }
+
+  const isInvalidForm = responseValidationFn => {
+    const invalidField = Object
+      .values(responseValidationFn)
+      .find(el => el === false);
+
+    return typeof invalidField === 'undefined';
   }
 
   const handleSubmit = async e => {
     e.preventDefault()
 
-    const data = getFormJSON(e.target)
+    if (formNode.current === null) { return; }
+
+    resetInputErrors();
+
+    const data = getFormJSON()
 
     const invalidFields = await validationFn(data);
 
     if (typeof invalidFields !== 'object' ||  invalidFields === null) {
-      throw new Error('Invalid validationFn response, it must be a object using the schema: { "field_name_1": "Field error message or false if is a invalid field, set to true if is a valid field", ... }');
+      throw new Error('Invalid validationFn response, it must be a object using the schema: { "field_name_1": "FALSE if is a invalid field, TRUE otherwise", ... }');
     }
 
-    const invalidFieldValue = Object
-      .values(invalidFields)
-      .find(el => (typeof el === 'string' || el === false));
-
-    if (typeof invalidFieldValue === 'undefined') {
-      onSuccess(data)
+    if (isInvalidForm(invalidFields)) {
+      onSuccess(data);
     } else {
+      markErrorOnFields(invalidFields);
       onError(invalidFields, data)
     }
 
     return false;
   }
 
-  return (<form onSubmit={handleSubmit}>
+  return (<form ref={formNode} className='form' onSubmit={handleSubmit}>
     { children }
   </form>)
 }
@@ -48,47 +85,72 @@ Form.propTypes = {
   onSuccess: PropTypes.func.isRequired,
 }
 
-const FormGroup = ({children, ...props}) => {
+const FormGroup = ({children}) => {
   return (<div className='form__group'>
     {children}
   </div>)
 }
 
-const FormInput = ({children, type = 'text', ...props}) => {
+const FormInput = ({children, type = 'text', className, ...props}) => {
 
   return (
-    <div className='form__input'>
+    <div data-inputname={props.name} className={'form__control form__input' + (className ? ' ' + className : '')}>
       <input type={type} {...props} />
     </div>
   )
 }
 
-const FormSelect = ({children, ...props}) => {
+const FormSelect = ({children, className, ...props}) => {
   return (
-    <div className='form__select'>
+    <label data-inputname={props.name} className={'form__control form__select' + (className ? ' ' + className : '')}>
       <select {...props}>
         { children }
       </select>
-    </div>)
+      <ChevronIcon />
+    </label>)
 }
 
-const FormCheckbox = ({children, ...props}) => {
+const FormCheckbox = ({children, className, name, ...props}) => {
+
+  const [value, setValue] = useState('off');
+
+  const toggleValue = e => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (value === 'off') {
+      setValue('on');
+    } else {
+      setValue('off');
+    }
+  }
+
   return (
-    <div className='form__checkbox'>
-      <span className='form__checkbox--icon'>
-        <input type="checkbox" {...props} />
-      </span>
-      {children}
+    <div data-inputname={name} className={'form__control form__checkbox' + (className ? ' ' + className : '')}>
+      <label className='form__checkbox-icon'>
+        <input type="hidden" value={value} name={name} />
+        <button onClick={toggleValue} {...props} className={"form__checkbox-icon--icon"  + (value === 'on' ? ' checked' : '')}>
+          <CheckIcon />
+        </button>
+      </label>
+      <div className='form__checkbox-content'>
+        {children}
+      </div>
     </div>
   )
 }
 
-const FormButton = ({children, type = 'button', ...props}) => {
+const FormButton = ({children, className, loading = false, type = 'button', ...props}) => {
   return (
-    <button type={type} {...props}>
-      { children }
+    <button className={'form__button' + (className ? ' ' + className : '')} type={type} {...props}>
+      {!loading && <span>{ children }</span>}
+      {loading && <span className='form__button-loading-icon'></span>}
     </button>
   )
+}
+
+FormButton.propTypes = {
+  loading: PropTypes.bool,
 }
 
 Form.Group = FormGroup;

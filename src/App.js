@@ -8,17 +8,19 @@ import GraciasScreen from './screens/Gracias';
 
 function App() {
   return (
-    <div className="wrapper">
-
+    <>
       {/* TODO: get from redux or something like that */}
       <RimacHeader />
-      
-      <Routes>
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/arma-tu-plan" element={<ArmaTuPlanScreen />} />
-        <Route path="/gracias" element={<GraciasScreen />} />
-      </Routes>
-    </div>
+      <div className="wrapper">
+
+        
+        <Routes>
+          <Route path="/" element={<HomeScreen />} />
+          <Route path="/arma-tu-plan" element={<ArmaTuPlanScreen />} />
+          <Route path="/gracias" element={<GraciasScreen />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 

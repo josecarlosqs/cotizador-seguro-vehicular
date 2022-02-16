@@ -1,4 +1,7 @@
 .wrapper {
-  // padding: 0 $wrapper-mobile-padding;
-  margin-top: $mobile-header-height;
+  padding-top: $mobile-header-height;
+  overflow-x: hidden;
+  overflow-y: visible;
+  z-index: 1;
+  position: relative;
 }

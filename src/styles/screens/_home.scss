@@ -54,6 +54,36 @@
   }
 
   .main {
+    overflow: hidden;
+    padding: 0px $wrapper-mobile-padding;
+
+    .form__tyc-copy {
+      margin-left: 12px;
+      font-family: $roboto;
+      font-weight: 300;
+      color: $text-light;
+      
+      a {
+        font-weight: normal;
+        color: $text-light;
+        line-height: 20px;
+      }
+    }
+
+    .form__send-button {
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
+
+    h2.main__title {
+      margin: 40px 0 24px 0;
+      color: $text-dark;
+      font-family: $lato;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      line-height: 32px;
+    }
 
   }
 }

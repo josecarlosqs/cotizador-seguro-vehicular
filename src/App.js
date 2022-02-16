@@ -12,8 +12,6 @@ function App() {
       {/* TODO: get from redux or something like that */}
       <RimacHeader />
       <div className="wrapper">
-
-        
         <Routes>
           <Route path="/" element={<HomeScreen />} />
           <Route path="/arma-tu-plan" element={<ArmaTuPlanScreen />} />

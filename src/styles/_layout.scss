@@ -1,8 +1,35 @@
 .wrapper {
-  padding-top: $mobile-header-height;
   overflow-x: hidden;
   overflow-y: visible;
   z-index: 1;
   position: relative;
   padding-bottom: 32px;
+}
+
+.aside {
+  &:before{
+    content: '';
+    display: block;
+    position: relative;
+    height: $mobile-header-height;
+    width: 100%;
+  }
+}
+
+
+@media screen and (min-width: $mobile-breakpoint) {
+  .wrapper {
+    height: 100vh;
+    padding-bottom: 0;
+  }
+
+  .main {
+    &:before{
+      content: '';
+      display: block;
+      position: relative;
+      height: $mobile-header-height;
+      width: 100%;
+    }
+  }
 }

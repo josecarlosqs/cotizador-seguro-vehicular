@@ -4,6 +4,7 @@ import {ReactComponent as CharacterSvg} from '../assets/home-character.svg';
 import Form from '../components/form'
 
 import { getUserData } from '../store/modules/user.actions'
+import { setHeaderExtraClassname } from '../store/modules/ui.actions'
 
 import {
   useEffect,
@@ -67,44 +68,56 @@ function Home() {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [submited, userState.data])
-  
+
+  useEffect(() => {
+    dispatch(setHeaderExtraClassname('bg-transparent no-border'));
+    return () => {
+      dispatch(setHeaderExtraClassname(''));
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className='home-screen'>
       <aside className='aside'>
-        <CharacterSvg className='aside__character' />
-        <p className='aside__text-new'>¡Nuevo!</p>
-        <h1 className='aside__title'>Seguro <span className='text-red-desktop'>Vehicular</span><br /><span className='text-red'>Tracking</span></h1>
-        <p className='aside__text-description'>Cuentanos donde le haras<br />seguimiento a tu seguro</p>
+        <div className='aside__container'>
+          <CharacterSvg className='aside__character' />
+          <p className='aside__text-new'>¡Nuevo!</p>
+          <h1 className='aside__title'>Seguro <span className='text-red-desktop'>Vehicular</span><br /><span className='text-red'>Tracking</span></h1>
+          <p className='aside__text-description'>Cuentanos donde le haras<br />seguimiento a tu seguro</p>
+        </div>
+        <div className='aside__background show-only-desktop'></div>
       </aside>
       <main className='main'>
-        <h2 className='main__title'>Déjanos tus datos</h2>
+        <div className='main__container'>
+          <h2 className='main__title'>Déjanos tus datos</h2>
 
-        <Form validationFn={validateForm} onSuccess={handleFormSubmit}>
-          <Form.Group>
+          <Form validationFn={validateForm} onSuccess={handleFormSubmit}>
+            <Form.Group>
 
-            <Form.Select disabled={userState.loading} name='tipo_documento'>
-              <option>DNI</option>
-              <option>RUC</option>
-            </Form.Select>
+              <Form.Select disabled={userState.loading} name='tipo_documento'>
+                <option>DNI</option>
+                <option>RUC</option>
+              </Form.Select>
 
-            <Form.Input  disabled={userState.loading} name='nro_documento' placeholder='Nro. de doc' type='number' />
+              <Form.Input  disabled={userState.loading} name='nro_documento' placeholder='Nro. de doc' type='number' />
 
-          </Form.Group>
+            </Form.Group>
+            
+            <Form.Input  disabled={userState.loading} name='celular' type='number' placeholder='Celular' />
           
-          <Form.Input  disabled={userState.loading} name='celular' type='number' placeholder='Celular' />
-        
-          <Form.Input disabled={userState.loading} name='placa' placeholder='Placa' />
-          
-          <Form.Checkbox disabled={userState.loading} name='tyc'>
-            <p className='form__tyc-copy'>Acepto la <a href='#'>Política de Protección de Datos Personales</a> y los <a href='#'>Términos y Condiciones</a>.</p>
-          </Form.Checkbox>
+            <Form.Input disabled={userState.loading} name='placa' placeholder='Placa' />
+            
+            <Form.Checkbox disabled={userState.loading} name='tyc'>
+              <p className='form__tyc-copy'>Acepto la <a href='#'>Política de Protección de Datos Personales</a> y los <a href='#'>Términos y Condiciones</a>.</p>
+            </Form.Checkbox>
 
-          <Form.Button type='submit' className='fw-mobile form__send-button' loading={userState.loading}>
-            COTÍZALO
-          </Form.Button>
+            <Form.Button type='submit' className='fw-mobile form__send-button' loading={userState.loading}>
+              COTÍZALO
+            </Form.Button>
 
-        </Form>
+          </Form>
+        </div>
 
       </main>
     </div>

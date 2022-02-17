@@ -86,4 +86,50 @@
     }
 
   }
+  
+  @media screen and (min-width: $mobile-breakpoint) {
+    display: grid;
+    grid-template-columns: 14fr 23fr;
+    grid-template-rows: auto;
+    height: 100%;
+    width: 100%;
+    max-width: $container-max-width;
+    margin: auto;
+
+    .aside {
+      position: relative;
+      font-size: 21px;
+      &__container {
+        width: 320px;
+        margin: 0 6.56%
+      }
+      &__character {
+        display: block;
+        height: auto;
+        width: 88%;
+        position: relative;
+        bottom: initial;
+        right: initial;
+      }
+      &__background {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 100vw;
+        background-image: url('../../assets/background-home.png');
+        background-size: cover;
+        background-position: right;
+      }
+    }
+
+    .main {
+      &__container {
+        width: 288px;
+        margin: auto;
+      }
+    }
+
+    
+  }
 }

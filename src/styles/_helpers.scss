@@ -3,6 +3,10 @@
   background-color: $bg-light;
 }
 
+.bg-transparent {
+  background: transparent!important;
+}
+
 // Border
 .no-border {
   border: none!important;

@@ -28,7 +28,7 @@ function ListStepper (props) {
     <div className='list-stepper'>
       <div className='list-stepper__wrapper'>
         {props.stepsArr.map((step, stepIx) => (
-          <div className='list-stepper__button-wrapper'>
+          <div key={`stepper_item_${stepIx}`} className='list-stepper__button-wrapper'>
             <button onClick={ goTo(step.path) } className={'list-stepper__button' + (stepIx === props.currentStepIndex ? ' list-stepper__button--current' : '')}>
               <span className='list-stepper__number'>{ stepIx + 1 }</span>
               <span className='list-stepper__label'>{ step.name }</span>

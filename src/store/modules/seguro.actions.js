@@ -3,7 +3,8 @@ import * as types from './seguro.types'
 
 export const registerSolicitudSeguro = (seguroFormData) => async dispatch => {
   dispatch({
-    type: types.START_REGISTER_INSURANCE_DATA
+    type: types.START_REGISTER_INSURANCE_DATA,
+    payload: seguroFormData
   });
 
 

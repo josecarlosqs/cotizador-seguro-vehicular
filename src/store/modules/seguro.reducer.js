@@ -4,7 +4,8 @@ const initialState = {
   registration: {
     loading: false,
     fetched: false,
-    data: null
+    data: null,
+    formData: null
   },
 }
 
@@ -16,7 +17,8 @@ const seguro = (state = initialState, action) => {
         registration: {
           loading: true,
           fetched: false,
-          data: state.registration.data
+          data: state.registration.data,
+          formData: action.payload
         }
       }
     case types.FINISH_REGISTER_INSURANCE_DATA:
@@ -25,7 +27,8 @@ const seguro = (state = initialState, action) => {
         registration: {
           loading: false,
           fetched: true,
-          data: action.payload
+          data: action.payload,
+          formData: state.registration.formData
         }
       }
     default:

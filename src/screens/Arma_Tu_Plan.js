@@ -122,7 +122,6 @@ function Arma_Tu_Plan() {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const dispatch_2 = useDispatch();
 
   const intl = new Intl.NumberFormat("en-EN", {minimumFractionDigits: 0, currency: 'USD', style: 'currency'});
   const intl_decimals = new Intl.NumberFormat("en-EN", {minimumFractionDigits: 2, currency: 'USD', style: 'currency'});
@@ -149,7 +148,7 @@ function Arma_Tu_Plan() {
 
   const handleSubmit = (dataJSON, formData) => {
     formData.append('user_id', userState.data.id);
-    dispatch_2(registerSolicitudSeguro(formData));
+    dispatch(registerSolicitudSeguro(formData));
   }
 
   const coberturaFormItems = {};
@@ -174,6 +173,12 @@ function Arma_Tu_Plan() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coberturasList])
 
+  useEffect(() => {
+    if (seguroRegistrationState.data !== null) {
+      navigate('/gracias')
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [seguroRegistrationState])
   
 
   const handleCoberturaItemChange = (type, ix) => value => {
@@ -289,6 +294,7 @@ function Arma_Tu_Plan() {
             <div className='form-insurance__amount'>
               <p className='form-insurance__amount-title'>MONTO</p>
               <p className='form-insurance__amount-number'>{ intl_decimals.format(amount) }</p>
+              <input type='hidden' name='amount' value={amount} />
               <p className='form-insurance__amount-recurrency'>
                 <span className='show-only-mobile'>MENSUAL</span>
                 <span className='show-only-desktop'>MENSUALES</span>

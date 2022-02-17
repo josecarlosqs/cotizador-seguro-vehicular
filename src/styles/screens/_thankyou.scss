@@ -1,0 +1,49 @@
+.thankyou-screen {
+  .aside {
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .main {
+    padding: 48px $wrapper-mobile-padding;
+    &__title {
+      font-family: $lato;
+      font-weight: normal;
+      font-size: 28px;
+      line-height: 36px;
+      letter-spacing: -0.6px;
+      color: $text-red;
+    }
+
+    &__subtitle {
+      font-family: $lato;
+      font-weight: normal;
+      font-size: 28px;
+      line-height: 36px;
+      letter-spacing: -0.6px;
+      color: $text-dark;
+      margin-bottom: 24px;
+    }
+
+    &__description {
+      font-family: $roboto;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 28px;
+      color: $text-light;
+      margin-bottom: 40px;
+      
+      strong {
+        font-weight: normal;
+      }
+    }
+
+    &__button {
+      width: 100%;
+    }
+  }  
+}

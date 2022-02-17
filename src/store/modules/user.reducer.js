@@ -22,7 +22,7 @@ const user = (state = initialState, action) => {
         data: action.payload
       }
     default:
-      return initialState
+      return state
   }
 }
 

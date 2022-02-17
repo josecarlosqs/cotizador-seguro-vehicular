@@ -13,6 +13,10 @@
   color: $text-red;
 }
 
+.text-right {
+  text-align: right;
+}
+
 // Responsive
 @media screen and (min-width: ($mobile-breakpoint + 1px)) {
   .show-only-mobile {

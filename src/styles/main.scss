@@ -6,7 +6,11 @@
 @import 'helpers';
 @import 'animations';
 @import 'layout';
-@import 'form';
+
 @import 'components/rimac-header';
+@import 'components/form';
+@import 'components/stepper';
+@import 'components/tabs';
 
 @import 'screens/home';
+@import 'screens/arma_tu_plan';

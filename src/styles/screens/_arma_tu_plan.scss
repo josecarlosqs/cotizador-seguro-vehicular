@@ -1,0 +1,281 @@
+.arma-tu-plan-screen {
+  .aside {
+    padding: 12px 0;
+    background-color: white;
+  }
+  .main {
+    background-color: $bg-light;
+    overflow: hidden;
+    padding-bottom: 52px;
+
+    &__title {
+      font-family: $lato;
+      font-weight: normal;
+      font-size: 28px;
+      line-height: 36px;
+      letter-spacing: -0.6px;
+      color: $text-dark;
+      margin: 40px $wrapper-mobile-padding 8px $wrapper-mobile-padding;
+    }
+    
+    &__description {
+      font-family: $roboto;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 28px;
+      color: $text-dark;
+      margin: 0px $wrapper-mobile-padding 8px $wrapper-mobile-padding;
+    }
+    
+    
+    &__card-vehicle-details {
+      padding: 44px 84px 36px 24px;
+      margin: $wrapper-mobile-padding;
+      background-color: white;
+      border-radius: 12px;
+      filter: drop-shadow(0px 0px 10px rgba(163, 171, 204, 0.12));
+      position: relative;
+
+      svg {
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: calc(100% + 8px);
+        width: auto;
+      }
+    }
+    
+    &__card-plate {
+      font-family: $roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: 0.2px;
+      color: $text-gray;
+    }
+
+    &__vehicle-model {
+      font-family: $lato;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0.2px;
+      color: $text-dark;
+    }
+
+    .insurance-form{
+      background-color: white;
+      // padding: 44px $wrapper-mobile-padding 0 $wrapper-mobile-padding;
+      padding: 44px 0 0 0;
+
+      &__customize-coverages-title {
+        font-family: $lato;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 28px;
+        color: $text-dark;
+        margin-top: 36px;
+        margin-bottom: 28px;
+        padding: 0 $wrapper-mobile-padding;
+      }
+    }
+    
+    
+    .insured-amount {
+      padding: 0 $wrapper-mobile-padding;
+      &__title {
+        font-family: $lato;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.2px;
+        color: $text-dark;
+      }
+
+      &__min-max {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        p {
+          font-family: $lato;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 0.6px;
+          text-transform: uppercase;
+          color: $text-light;
+        }
+        .separator{
+          display: block;
+          width: 1px;
+          background-color: $text-light;
+          height: 12px;
+          margin: 0 10px;
+        }
+      }
+
+    }
+
+    .insurance-list__wrapper {
+      padding: $wrapper-mobile-padding;
+      position: relative;
+    }
+
+    .insurance-list__empty-list {
+      color: $text-light;
+      font-family: $roboto;
+      text-transform: uppercase;
+    }
+
+    .insurance-list-item {
+      display: grid;
+      grid-template-columns: 7fr 30fr;
+      grid-template-rows: auto;
+      padding: 24px 0 32px 0;
+      border-bottom: 1px $gray solid;
+      z-index: 2;
+      position: relative;
+      
+      &--hidden{
+        border-bottom: none;
+        overflow: hidden;
+        height: 1px;
+        width: 1px;
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        padding: 0;
+      }
+
+      &__title{
+        font-family: $lato;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.2px;
+        color: $text-dark;
+        margin-bottom: 16px;
+        padding-right: 60px;
+      }
+
+      &__description {
+        font-family: $roboto;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 24px;
+        color: $text-light;
+      }
+
+      &__content {
+        position: relative;
+      }
+
+      &__checkbox {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: none;
+        outline: none;
+        background: none;
+        padding: 0;
+
+        &-icon {
+          display: block;
+          width: 52px;
+          height: 32px;
+          border-radius: 32px;
+          background-color: $gray;
+          transition: background-color 0.4s;
+
+          &:before {
+            content: '';
+            display: block;
+            background-color: white;
+            width: 28px;
+            height: 28px;
+            box-shadow: 0px 2px 2px rgba(163, 171, 204, 0.3), 0px 2px 1px rgba(163, 171, 204, 0.06);
+            position: absolute;
+            top: 50%;
+            left: 2px;
+            transform: translate(0px, -50%);
+            border-radius: 100%;
+            transition: transform 0.4s;
+          }
+        }
+
+        &-label {
+          display: none;
+        }
+
+        $checkbox_selector: &;
+
+        &--active {
+          .insurance-list-item {
+            &__checkbox{
+              &-icon {
+                background-color: $green_2;
+                &:before {
+                  transform: translate(20px, -50%);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .form-insurance {
+      &__aside {
+        position: fixed;
+        display: flex;
+        z-index: 2;
+        background-color: white;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        padding: 14px $wrapper-mobile-padding;
+        box-shadow: 0px 1px 4px rgba(163, 171, 204, 0.06), 0px 8px 30px rgba(20, 43, 127, 0.1);
+      }
+
+      &__amount {
+        flex: 1;
+        &-title {
+          display: none;
+        }
+        &-number {
+          font-family: $lato;
+          font-weight: normal;
+          font-size: 24px;
+          line-height: 32px;
+          letter-spacing: -0.2px;
+          color: $text-dark;
+          
+        }
+        &-recurrency {
+          font-family: $lato;
+          font-weight: bold;
+          font-size: 10px;
+          line-height: 16px;
+          letter-spacing: 0.8px;
+          color: $text-dark;
+        }
+
+      }
+      &__includes {
+        display: none;
+      }
+      &__submit {
+        flex: 1
+      }
+    }
+
+  }   
+}

@@ -1,21 +1,43 @@
 .rimac-header {
-  display: flex;
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  display: flex;
+  justify-content: center;
   padding: 0px $wrapper-mobile-padding;
   height: $mobile-header-height;
   background-color: #fff;
   border-bottom: 1px solid $light;
   z-index: 2;
+  
+  &__container {
+    width: 100%;
+    max-width: $container-max-width;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &__logo{
     display: block;
     width: 92px;
+  }
+
+  &__call-us-wrapper {
+    display: flex;
+    align-items: center;
+    > span {
+      font-family: $roboto;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: 0.2px;
+      color: $text-light;
+      display: block;
+      margin-right: 20px;
+    }
   }
 
   &__call-us{
@@ -33,6 +55,16 @@
       vertical-align: middle;
       font-family: $roboto;
       font-size: 14px;
+    }
+  }
+}
+
+@media screen and (min-width: $mobile-breakpoint) {
+  .rimac-header {
+    padding: 0;
+
+    &__container {
+      padding: 0 2.70%;   
     }
   }
 }

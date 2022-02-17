@@ -1,0 +1,51 @@
+.stepper {
+  .bar-stepper {
+    display: flex;
+    align-items: center;
+    padding: 0px $wrapper-mobile-padding;
+
+    &__goback-button {
+      display: block;
+      padding: 0 11px;
+      height: 24px;
+      border: 1px $gray solid;
+      border-radius: 100%;
+      outline: none;
+      background: white;
+      position: relative;
+
+      svg {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &__label {
+      color: $text-light;
+      font-family: $lato;
+      font-size: 10px;
+      line-height: 16px;
+      font-weight: bold;
+      white-space: nowrap;
+      margin: 0 16px 0 12px;
+    }
+
+    &__progress {
+      flex: 1;
+      &--wrapper{
+        display: block;
+        width: 100%;
+        height: 6px;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      &--current{
+        background-color: $purple;
+        height: 100%;
+      }
+    }
+  }
+}

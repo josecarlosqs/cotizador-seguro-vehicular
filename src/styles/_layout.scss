@@ -16,7 +16,6 @@
   }
 }
 
-
 @media screen and (min-width: $mobile-breakpoint) {
   .wrapper {
     height: 100vh;
@@ -32,4 +31,16 @@
       width: 100%;
     }
   }
+
+  button {
+    cursor: pointer;
+    opacity: 1;
+  
+    transition: opacity 0.1s;
+  
+    &:active {
+      opacity: 0.7;
+    }
+  }
+  
 }

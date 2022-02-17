@@ -39,7 +39,8 @@ class CoberturaListItem extends Component {
 
     this.state = {
       isSelected: false,
-      className: ''
+      className: '',
+      showDescription: false
     };
   }
 
@@ -84,6 +85,15 @@ class CoberturaListItem extends Component {
     });
   }
 
+  toggleDescription = e => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.setState({
+      showDescription: !this.state.showDescription
+    })
+  }
+
   render () {
     return (
       <div className={'insurance-list-item' + (this.state.className ? ` ${this.state.className}` : '')}>
@@ -97,8 +107,10 @@ class CoberturaListItem extends Component {
             <span className='insurance-list-item__checkbox-icon'></span>
             <p className='insurance-list-item__checkbox-label'>{ this.state.isSelected ? 'QUITAR' : 'AGREGAR' }</p>
           </button>
-          <p className='insurance-list-item__description'>{ this.props.itemData.description }</p>
-          {/* toggle description */}
+          <p className={'insurance-list-item__description' + (this.state.showDescription ? ' insurance-list-item__description--shown' : ' insurance-list-item__description--hidden')}>{ this.props.itemData.description }</p>
+          <button onClick={this.toggleDescription} className='insurance-list-item__description-button-toggle'>
+            <span>{this.state.showDescription ? 'VER MENOS' : 'VER MÁS'}</span>
+          </button>
         </div>
       </div>
     )
@@ -125,6 +137,10 @@ function Arma_Tu_Plan() {
 
   const intl = new Intl.NumberFormat("en-EN", {minimumFractionDigits: 0, currency: 'USD', style: 'currency'});
   const intl_decimals = new Intl.NumberFormat("en-EN", {minimumFractionDigits: 2, currency: 'USD', style: 'currency'});
+
+  const getUserName = () => {
+    return userState.data.name.split(' ')[0];
+  }
 
   const formatPlate = plate => {
     plate = plate.toUpperCase();
@@ -260,7 +276,12 @@ function Arma_Tu_Plan() {
   if (baseData.data !== null) {
     main = ( <main className='main'>
       <Form validationFn={validateFn} onSuccess={handleSubmit}>
-        <h2 className='main__title'>Mira las coberturas</h2>
+        <button className='main__goback show-only-desktop'>
+          <span>VOLVER</span>
+        </button>
+
+        <h2 className='main__title show-only-mobile'>Mira las coberturas</h2>
+        <h2 className='main__title show-only-desktop'>¡Hola, <span className='text-red'>{getUserName()}</span>!</h2>
         <p className='main__description'>Conoce las coberturas para tu plan</p>
 
         <section className='form-insurance'>
@@ -275,13 +296,15 @@ function Arma_Tu_Plan() {
 
               <div className='insured-amount'>
                 <div className='insured-amount--wrapper'>
-                  <p className='insured-amount__title'>Indica la suma asegurada</p>
-                  <div className='insured-amount__min-max'>
-                    <p>MIN {intl.format(baseData.data.minInsuredAmount)}</p>
-                    <span className='separator' />
-                    <p>MAX {intl.format(baseData.data.maxInsuredAmount)}</p>
+                  <div className='insured-amount__texts'>
+                    <p className='insured-amount__title'>Indica la suma asegurada</p>
+                    <div className='insured-amount__min-max'>
+                      <p>MIN {intl.format(baseData.data.minInsuredAmount)}</p>
+                      <span className='separator' />
+                      <p>MAX {intl.format(baseData.data.maxInsuredAmount)}</p>
+                    </div>
                   </div>
-                  <Form.InputMoney onChange={handleMontoAseguradoChange} name='insured_amount' max={baseData.data.maxInsuredAmount} min={baseData.data.minInsuredAmount} step={100} />
+                  <Form.InputMoney className='insured-amount__control' onChange={handleMontoAseguradoChange} name='insured_amount' max={baseData.data.maxInsuredAmount} min={baseData.data.minInsuredAmount} step={100} />
                 </div>
               </div>
 
@@ -291,27 +314,30 @@ function Arma_Tu_Plan() {
             </div>
           </section>
           <aside className='form-insurance__aside'>
-            <div className='form-insurance__amount'>
-              <p className='form-insurance__amount-title'>MONTO</p>
-              <p className='form-insurance__amount-number'>{ intl_decimals.format(amount) }</p>
-              <input type='hidden' name='amount' value={amount} />
-              <p className='form-insurance__amount-recurrency'>
-                <span className='show-only-mobile'>MENSUAL</span>
-                <span className='show-only-desktop'>MENSUALES</span>
-              </p>
-            </div>
-            <div className='form-insurance__includes'>
-              <p className='form-insurance__includes-title'>El precio incluye</p>
-              <ul className='form-insurance__includes-list'>
-                <li>Llanta de repuesto</li>
-                <li>Análisis de motor</li>
-                <li>Aros gratis</li>
-              </ul>
-            </div>
+            <div className='form-insurance__wrapper'>
+              <div className='form-insurance__amount'>
+                <p className='form-insurance__amount-title'>MONTO</p>
+                <p className='form-insurance__amount-number'>{ intl_decimals.format(amount) }</p>
+                <input type='hidden' name='amount' value={amount} />
+                <p className='form-insurance__amount-recurrency'>
+                  <span className='show-only-mobile'>MENSUAL</span>
+                  <span className='show-only-desktop'>MENSUALES</span>
+                </p>
+              </div>
+              <div className='form-insurance__includes'>
+                <p className='form-insurance__includes-title'>El precio incluye</p>
+                <ul className='form-insurance__includes-list'>
+                  <li>Llanta de repuesto</li>
+                  <li>Análisis de motor</li>
+                  <li>Aros gratis</li>
+                </ul>
+              </div>
 
-            <div className='form-insurance__submit text-right'>
-              <Form.Button loading={seguroRegistrationState.loading} type='submit'>LO QUIERO</Form.Button>
+              <div className='form-insurance__submit text-right'>
+                <Form.Button loading={seguroRegistrationState.loading} type='submit'>LO QUIERO</Form.Button>
+              </div>
             </div>
+            
           </aside>
         </section>
 
@@ -335,7 +361,9 @@ function Arma_Tu_Plan() {
   return (
     <div className='arma-tu-plan-screen'>
       <aside className='aside'>
-        <Stepper stepsArr={stepsArr} currentStepIndex={1} />
+        <div className='aside__container'>
+          <Stepper stepsArr={stepsArr} currentStepIndex={1} />
+        </div>
       </aside>
 
       { main }

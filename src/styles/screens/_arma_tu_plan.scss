@@ -171,6 +171,54 @@
         font-size: 14px;
         line-height: 24px;
         color: $text-light;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.4s;
+        &--shown {
+          max-height: 800px;
+        }
+      }
+
+      .insurance-list-item__description-button-toggle {
+        border: none;
+        padding: 0;
+        outline: none;
+        background: none;
+
+        span {
+          display: inline-block;
+          vertical-align: middle;
+          font-family: &lato;
+          font-weight: bold;
+          font-size: 10px;
+          line-height: 16px;
+          letter-spacing: 0.8px;
+          text-transform: uppercase;
+          color: $purple_3;
+        }
+        &:after {
+          content: '';
+          display: inline-block;
+          vertical-align: middle;
+          width: 16px;
+          height: 16px;
+          background-size: cover;
+        }
+      }
+
+      &__description--shown + .insurance-list-item__description-button-toggle {
+        span {
+          color: $text-gray;
+        }
+        &:after {
+          background-image: url('../../assets/gl_arrow_up.svg');
+        }
+      }
+
+      &__description--hidden + .insurance-list-item__description-button-toggle {
+        &:after {
+          background-image: url('../../assets/gl_arrow_down.svg');
+        }
       }
 
       &__content {
@@ -235,7 +283,6 @@
     .form-insurance {
       &__aside {
         position: fixed;
-        display: flex;
         z-index: 2;
         background-color: white;
         width: 100%;
@@ -243,6 +290,9 @@
         left: 0;
         padding: 14px $wrapper-mobile-padding;
         box-shadow: 0px 1px 4px rgba(163, 171, 204, 0.06), 0px 8px 30px rgba(20, 43, 127, 0.1);
+      }
+      &__wrapper {
+        display: flex;
       }
 
       &__amount {
@@ -277,5 +327,299 @@
       }
     }
 
-  }   
+  }
+
+  
+  @media screen and (min-width: $mobile-breakpoint) {
+    display: block;
+    // grid-template-columns: 10fr 27fr;
+    // grid-template-rows: auto;
+    min-height: 100%;
+    width: 100%;
+    max-width: $container-max-width;
+    margin: auto;
+    position: relative;
+
+    .aside {
+      position: absolute;
+      // width: 23.529%;
+      width: 27.028%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      &__container {
+        position: fixed;
+        padding: 0;
+        z-index: 2;
+      }
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 100vw;
+        background-color: $bg-light;
+        z-index: 1;
+      }
+    }
+
+    .main {
+      margin: 0 24.325% 0 27.028%;
+      background: none;
+      padding-top: 52px;
+
+      &__goback {
+        border: none;
+        background: none;
+        span {
+          display: inline-block;
+          vertical-align: middle;
+          font-family: $lato;
+          font-weight: normal;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 0.6px;
+          color: $text-gray;
+        }
+
+        &:before {
+          content: '';
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 16px;
+          width: 24px;
+          height: 24px;
+          background-size: cover;
+          background-image: url('../../assets/icon_goback.svg')
+        }
+      }
+
+      &__title {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 8px;
+        margin-top: 24px;
+
+        font-size: 40px;
+        line-height: 48px;
+      }
+      
+      &__description {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 44px;
+      }
+      
+      &__card-vehicle-details {
+        margin-left: 0;
+        margin-right: 0;
+
+        padding: 40px 160px 56px 32px;
+
+        svg {
+          right: 20px;
+        }
+      }
+
+      &__vehicle-model {
+        font-size: 20px;
+        line-height: 28px;
+      }
+
+      .form {
+        max-width: 384px;
+        margin: auto;
+
+        .insured-amount {
+          padding-left: 0;
+          padding-right: 0;
+
+          &--wrapper{
+            display: flex;
+            align-items: center;
+            padding-bottom: 43px;
+            border-bottom: 1px $gray solid;
+          }
+
+          &__control {
+            flex: 1;
+            margin-left: 44px;
+            margin-bottom: 0px;
+          }
+
+          &__min-max {
+            .separator{
+              opacity: 0;
+            }
+          }
+        }
+
+        .insurance-form {
+          padding-top: 55px - 32px;
+        }
+
+        .form-insurance {
+          display: block;
+          &__aside {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: initial;
+            box-shadow: none;
+            width: 24.325%;
+            padding-top: $mobile-header-height + 189px ;
+          }
+          
+          &__wrapper {
+            position: fixed;
+            flex-direction: column;
+          }
+
+          &__amount-title {
+            display: block;
+            font-family: $lato;
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 16px;
+            letter-spacing: 0.6px;
+            color: $text-dark;
+            margin-bottom: 10px;
+          }
+
+          &__amount-number {
+            margin-bottom: 4px;
+          }
+
+          &__amount-recurrency {
+            padding-bottom: 19px;
+            border-bottom: 1px $gray solid;
+            margin-bottom: 24px;
+          }
+
+          &__includes {
+            display: block;
+
+            &-title {
+              font-family: $lato;
+              font-weight: normal;
+              font-size: 16px;
+              line-height: 24px;
+              letter-spacing: 0.2px;
+              color: $text-dark;
+              margin-bottom: 12px;
+            }
+
+            &-list {
+              list-style: none;
+              margin-bottom: 32px;
+              li{
+                font-family: $roboto;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 24px;
+                color: $text-light;
+                padding-left: 33px;
+                position: relative;
+                margin-bottom: 8px;
+
+                &:before {
+                  content: '';
+                  position: absolute;
+                  display: block;
+                  left: 0;
+                  top: 0;
+                  width: 16px;
+                  height: 16px;
+                  background-image: url('../../assets/gl_check.png');
+                  background-size: contain;
+                }
+              }
+            }
+          }
+        }
+
+        .insurance-list-item {
+          &__checkbox {
+            position: relative;
+            &--active{
+              .insurance-list-item__checkbox-icon {
+
+                &:after {
+                  content: '-';
+                }
+              }
+            }
+            &-icon {
+              vertical-align: middle;
+              display: inline-block;
+              width: 24px;
+              height: 24px;
+              border: 1px $purple_2 solid;
+              color: $purple_3;
+              border-radius: 100%;
+              background: white;
+              text-align: center;
+              margin-right: 12px;
+              &:before {
+                display: none;
+              }
+              &:after {
+                content: '+';
+                display: inline-block;
+                line-height: 20px;
+                font-size: 21px;
+                font-family: $lato;
+              }
+            }
+            &-label {
+              vertical-align: middle;
+              display: inline-block;
+              font-family: $lato;
+              font-weight: bold;
+              font-size: 12px;
+              line-height: 16px;
+              letter-spacing: 0.6px;
+              color: $purple_3;
+            }
+          }
+
+          &__description-button-toggle {
+            position: absolute;
+            top: 0;
+            right: 0;
+    
+            span {
+              display: none;
+            }
+
+            &:after {
+              width: 20px;
+              height: 20px;
+            }
+          }
+          
+          &__description--shown + .insurance-list-item__description-button-toggle {
+            span {
+              color: $text-gray;
+            }
+            &:after {
+              background-image: url('../../assets/gl_arrow_up_red.svg');
+            }
+          }
+          
+          &__description--hidden + .insurance-list-item__description-button-toggle {
+            &:after {
+              background-image: url('../../assets/gl_arrow_up_red.svg');
+              transform: rotate(180deg);
+            }
+          }
+        }
+      }
+    }
+
+    
+  }
 }

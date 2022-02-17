@@ -17,11 +17,16 @@ import character_mobile from '../assets/thankyou-character.svg';
 function Gracias() {
   const navigate = useNavigate()
 
-  const userState = useSelector(store => store.user);
+  const userState = useSelector(store => {
+    if (store.user.data === null) {
+      return { fetched: false, data: { email: '' } }
+    }
+    return store.user
+  });
   const insuranceRegistrationState = useSelector(store => store.seguro.registration);
 
   useEffect(() => {
-    if (userState.data === null) {
+    if (userState.fetched === false) {
       navigate('/');
       return;
     } else if (insuranceRegistrationState.data === null || insuranceRegistrationState.formData === null) {

@@ -86,7 +86,6 @@ function Home() {
           <h1 className='aside__title'>Seguro <span className='text-red-desktop'>Vehicular</span><br /><span className='text-red'>Tracking</span></h1>
           <p className='aside__text-description'>Cuentanos donde le haras<br />seguimiento a tu seguro</p>
         </div>
-        <div className='aside__background show-only-desktop'></div>
       </aside>
       <main className='main'>
         <div className='main__container'>

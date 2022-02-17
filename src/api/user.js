@@ -281,7 +281,8 @@ export const fetchUserData = async formData => {
     vehicle: {
       car: {
         model: carModels[carModelIx],
-        year: carYear
+        year: carYear,
+        plate: formData.placa
       }
     }
   }

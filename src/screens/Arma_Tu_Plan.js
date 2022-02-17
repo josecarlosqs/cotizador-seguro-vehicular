@@ -272,11 +272,18 @@ function Arma_Tu_Plan() {
     tabs = <Tabs tabs={tabElements} />
   }
 
+  const goBack = e => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    navigate(-1);
+  }
+
   let main = (<div>Cargando ...</div>);
   if (baseData.data !== null) {
     main = ( <main className='main'>
       <Form validationFn={validateFn} onSuccess={handleSubmit}>
-        <button className='main__goback show-only-desktop'>
+        <button onClick={goBack} className='main__goback show-only-desktop'>
           <span>VOLVER</span>
         </button>
 

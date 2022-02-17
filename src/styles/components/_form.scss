@@ -1,0 +1,234 @@
+%inputblock {
+  width: 100%;
+  border-radius: $input-border-radius;
+  border: $input-border;
+  font-size: 1rem;
+  line-height: 1.5em;
+  font-family: $lato;
+  color: $text-dark;
+  background: white;
+  outline: none;
+  padding: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form {
+  display: block;
+  
+  &__control {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__input {
+    margin-bottom: 16px;
+
+    input {
+      display: block;
+      @extend %inputblock;
+
+      &::placeholder {
+        color: $text-gray;
+      }
+    }
+  }
+
+  &__input_money {
+    margin-bottom: 16px;
+    position: relative;
+
+    p {
+      display: block;
+      text-align: center;
+      @extend %inputblock;
+    }
+
+    &-button{
+      &--reduce{
+        font-family: $lato;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 50px;
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 1.5rem;
+        color: $text-purple;
+      }
+      &--add{
+        font-family: $lato;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 50px;
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 1.5rem;
+        color: $text-purple;
+      }
+    }
+  }
+
+  &__select {
+    display: block;
+    margin-bottom: 16px;
+    position: relative;
+    background: white;
+
+    select {
+      position: relative;
+      z-index: 2;
+      @extend %inputblock;
+      background: transparent;
+      padding-right: 46px;
+
+       &::-ms-expand {
+        display: none;
+      }
+    }
+
+    svg {
+      display: block;
+      position: absolute;
+      z-index: 1;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 11px;
+      height: auto;
+    }
+  }
+  
+  &__group {
+    margin-bottom: 16px;
+    display: flex;
+
+    .form__input, .form__select {
+      margin-bottom: 0;
+      margin-left: -0.5px;
+
+      & > *:first-child {
+        border-radius: 0;
+      }
+
+      &:last-child {
+        flex: 1;
+      }
+
+      &:last-child > *:first-child {
+        border-top-right-radius: $input-border-radius;
+        border-bottom-right-radius: $input-border-radius;
+      }
+
+      &:first-child > *:first-child {
+        border-top-left-radius: $input-border-radius;
+        border-bottom-left-radius: $input-border-radius;
+      }
+    }
+
+  }
+
+  &__checkbox {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    margin-bottom: 16px;
+
+    &-icon {
+      display: block;
+      width: $checkbox-size;
+      height: $checkbox-size;
+      position: relative;
+
+      input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+
+      button {
+        background-color: $light;
+        border: none;
+        width: 100%;
+        height: 100%;
+        border-radius: $checkbox-border-radius;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: 1px white solid;
+        transition: background-color 0.2s;
+
+        svg {
+          opacity: 0;
+          transition: opacity 0.2s;
+        }
+        
+        &.checked {
+          background-color: $green;
+          
+          svg {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    &-content {
+      display: block;
+    }
+
+  }
+
+  &__error {
+    z-index: 2;
+    border-color: $red;
+    input, select {
+      border-color: $red;
+      color: $text-red;
+    }
+
+    input::placeholder {
+      color: mix($text-red, white, 50%);
+    }
+
+    .form__checkbox-icon button {
+      border-color: $red;
+    }
+  }
+
+  &__button {
+    padding: 20px 32px;
+    background: $red;
+    color: white;
+    border: none;
+    border-radius: $button-border-radius;
+    font-family: $lato;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    font-size: 14px;
+    line-height: 16px;
+    min-width: 192px;
+    text-align: center;
+
+    span.form__button-loading-icon{
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-top: 2px transparent solid;
+      border-left: 2px white solid;
+      border-bottom: 2px white solid;
+      border-right: 2px white solid;
+      border-radius: 100%;
+      animation: spin 1s linear infinite;
+    }
+  }
+
+
+}

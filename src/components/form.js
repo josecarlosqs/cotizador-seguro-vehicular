@@ -1,8 +1,13 @@
 import PropTypes from 'prop-types';
 import {
   useState,
-  useRef
+  useRef,
+  useEffect
 } from 'react'
+
+import {
+  usePrevious
+} from '../hooks'
 
 import {ReactComponent as CheckIcon} from '../assets/ic_check.svg'
 import {ReactComponent as ChevronIcon} from '../assets/ic_chevron.svg'
@@ -14,7 +19,7 @@ import {ReactComponent as ChevronIcon} from '../assets/ic_chevron.svg'
  * @param function onSuccess Executed when validationFn only returns a true entries.
  * @returns ReactElement
  */
-const Form = ({validationFn, onError = () => {}, onSuccess, children}) => {
+const Form = ({validationFn, onError = () => {}, onSuccess, children, className}) => {
 
   const formNode = useRef(null);
 
@@ -56,25 +61,25 @@ const Form = ({validationFn, onError = () => {}, onSuccess, children}) => {
 
     resetInputErrors();
 
-    const data = getFormJSON()
+    const dataJSON = getFormJSON()
 
-    const invalidFields = await validationFn(data);
+    const invalidFields = await validationFn(dataJSON);
 
     if (typeof invalidFields !== 'object' ||  invalidFields === null) {
       throw new Error('Invalid validationFn response, it must be a object using the schema: { "field_name_1": "FALSE if is a invalid field, TRUE otherwise", ... }');
     }
 
     if (isInvalidForm(invalidFields)) {
-      onSuccess(data);
+      onSuccess(dataJSON, new FormData(formNode.current));
     } else {
       markErrorOnFields(invalidFields);
-      onError(invalidFields, data)
+      onError(invalidFields, dataJSON)
     }
 
     return false;
   }
 
-  return (<form ref={formNode} className='form' onSubmit={handleSubmit}>
+  return (<form ref={formNode} className={'form' + (className ? ' ' + className : '')} onSubmit={handleSubmit}>
     { children }
   </form>)
 }
@@ -98,6 +103,60 @@ const FormInput = ({children, type = 'text', className, ...props}) => {
       <input type={type} {...props} />
     </div>
   )
+}
+
+
+const FormInputMoney = ({children, min, max, step, defaultValue, className, onChange = () => {}, disabled = false, ...props}) => {
+  const [value, setValue] = useState((defaultValue >= min && defaultValue <= max) ? defaultValue : min);
+
+  const previousValue = usePrevious(value);
+
+  const intl = new Intl.NumberFormat("en-EN", {minimumFractionDigits: 0, currency: 'USD', style: 'currency'});
+
+  const handleReduce = e => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (value - step >= min) {
+      setValue(value - step)
+    }
+  }
+
+  const handleAdd = e => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (value + step <= max) {
+      setValue(value + step)
+    }
+  }
+
+  useEffect(() => {
+    onChange(value, typeof previousValue === 'undefined' ? 0 : previousValue)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value])
+
+  useEffect(() => {
+    onChange(value, typeof previousValue === 'undefined' ? 0 : previousValue)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  return (
+    <div data-inputname={props.name} className={'form__control form__input_money' + (className ? ' ' + className : '')}>
+      <button onClick={handleReduce} className='form__input_money-button--reduce'>-</button>
+      <p>{ intl.format(value) }</p>
+      <button onClick={handleAdd} className='form__input_money-button--add'>+</button>
+      <input type='hidden' name={props.name} value={value} />
+    </div>
+  )
+}
+
+FormInputMoney.propTypes = {
+  min: PropTypes.number,
+  max: PropTypes.number,
+  step: PropTypes.number,
+  defaultValue: PropTypes.number,
+  onChange: PropTypes.func
 }
 
 const FormSelect = ({children, className, ...props}) => {
@@ -157,6 +216,7 @@ Form.Group = FormGroup;
 Form.Input = FormInput;
 Form.Select = FormSelect;
 Form.Checkbox = FormCheckbox;
+Form.InputMoney = FormInputMoney;
 Form.Button = FormButton;
 
 export default Form;

@@ -111,7 +111,9 @@
         bottom: initial;
         right: initial;
       }
-      &__background {
+      &:after {
+        content: '';
+        display: block;
         position: absolute;
         right: 0;
         top: 0;

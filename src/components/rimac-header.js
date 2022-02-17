@@ -1,7 +1,12 @@
+import {
+  useSelector
+} from 'react-redux'
+
 /* eslint-disable jsx-a11y/alt-text */
 function RimacHeader () {
+  const extraClassName = useSelector(state => state.ui.header_extra_className)
   return (
-    <header className="rimac-header">
+    <header className={"rimac-header" + (extraClassName !== '' ? ` ${extraClassName}` : '')}>
       <div className="rimac-header__container">
         <img className="rimac-header__logo" src="img/logo.svg" alt="Rimac Seguros" />
         <span className='rimac-header__call-us-wrapper'>

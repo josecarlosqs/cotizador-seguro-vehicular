@@ -39,7 +39,9 @@ function Gracias() {
 
 
   useEffect(() => {
-    console.log('As required', insuranceRegistrationState.formData.get('amount'))
+    if (insuranceRegistrationState.formData !== null) {
+      console.log('As required', insuranceRegistrationState.formData.get('amount'))
+    }
   }, [insuranceRegistrationState]);
 
   return (

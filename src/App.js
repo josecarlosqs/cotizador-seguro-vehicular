@@ -9,7 +9,6 @@ import GraciasScreen from './screens/Gracias';
 function App() {
   return (
     <>
-      {/* TODO: get from redux or something like that */}
       <RimacHeader />
       <div className="wrapper">
         <Routes>

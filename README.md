@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# Cotizador de Seguros Vehiculares
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Propuesta de solución del reto técnico para Indra.
 
-## Available Scripts
+# Detalles de la solución
+## Librerías
+Además de las librerías `react`, `react-dom` y `react-scripts`, que vienen por defecto al crear el proyecto usando `create-react-app`, se utilizaron las siguientes librerías:
 
-In the project directory, you can run:
+- `axios`: Con esta librería hago las consultas al REST API de datos de Persona (`https://jsonplaceholder.typicode.com`).
+- `minireset.css`: Reset de CSS ligero, permite maquetar sobre una base común de estilos por defecto de navegador.
+- `sass`: Preprocesador de CSS, permite escribir CSS usando una sintaxis más amigable, además que habilita más funciones y operadores.
+- `react-router-dom`: Permite asociar componentes de React a rutas de navegador, con esta librería realizo los cambios de pantalla de la solución.
+- `redux`: Contenedor de estado reactivo global, esta librería me permite almacenar los datos obtenidos de los diferentes endpoints en esta solución.
+- `redux-thunk`: Middleware para Redux, permite el uso de acciones de respuesta asíncrona, uso esta librería para hacer la solicitud de datos a los diferentes endpoints de la solución.
+- `react-redux`: Integración de Redux con componentes de React.
+- `prop-types`: Permite validar las propiedades enviadas a los componentes de React.
+- `lodash`: Libreria de utilitarios para arrays y objetos, puntualmente uso una función llamada `lodash/clone`, para clonar estados de componentes de React.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Estrategia de desarrollo
+Comencé maquetando las vistas en mobile, fijándome en la vista desktop para poder crear los elementos necesarios para cuando la pantalla escale.
 
-### `npm test`
+Luego de esto fue implementado redux y redux-thunk para comenzar con la parte de manejo de datos globales, puntualmente hablando de los request a REST API desde la capa de datos.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Culminado esto, adapte las vistas mobile a vistas desktop.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Iniciar el proyecto en local
+Luego de descargar el repositorio, ejecutar los siguientes comandos en una terminal.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `npm i`: Instalar las librerías y dependencias del proyecto.
+- `npm start`: Inicia un servidor local en el puerto 3000 y compila el proyecto para habilitarlo en esta ruta.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Compilar el proyecto para producción
 
-### `npm run eject`
+- `npm i`: Instalar las librerías y dependencias del proyecto.
+- `npm run build`: Compila el proyecto y lo envía a la carpeta `dist`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+En la carpeta `dist` se pueden encontrar los archivos compilados listos para ser cargados a un servidor.

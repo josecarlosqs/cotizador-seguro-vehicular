@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/cotizador-seguro-vehicular/static/css/main.a38922b2.css",
-    "main.js": "/cotizador-seguro-vehicular/static/js/main.10f857dc.js",
+    "main.css": "/cotizador-seguro-vehicular/static/css/main.a2e3cbe0.css",
+    "main.js": "/cotizador-seguro-vehicular/static/js/main.cb58367f.js",
     "static/js/787.e1d500ca.chunk.js": "/cotizador-seguro-vehicular/static/js/787.e1d500ca.chunk.js",
     "static/media/home-character.svg": "/cotizador-seguro-vehicular/static/media/home-character.868b046cb009a7645d94791664cc67a5.svg",
     "static/media/thankyou-character-desktop.svg": "/cotizador-seguro-vehicular/static/media/thankyou-character-desktop.a37849f8a7c89fc71e1f.svg",
@@ -16,12 +16,12 @@
     "static/media/gl_arrow_up_red.svg": "/cotizador-seguro-vehicular/static/media/gl_arrow_up_red.01d9f971908c2d165264.svg",
     "static/media/gl_arrow_down.svg": "/cotizador-seguro-vehicular/static/media/gl_arrow_down.b6be85aa47ffa2e2109e.svg",
     "static/media/gl_arrow_up.svg": "/cotizador-seguro-vehicular/static/media/gl_arrow_up.dffe5915a60270a4b8e4.svg",
-    "main.a38922b2.css.map": "/cotizador-seguro-vehicular/static/css/main.a38922b2.css.map",
-    "main.10f857dc.js.map": "/cotizador-seguro-vehicular/static/js/main.10f857dc.js.map",
+    "main.a2e3cbe0.css.map": "/cotizador-seguro-vehicular/static/css/main.a2e3cbe0.css.map",
+    "main.cb58367f.js.map": "/cotizador-seguro-vehicular/static/js/main.cb58367f.js.map",
     "787.e1d500ca.chunk.js.map": "/cotizador-seguro-vehicular/static/js/787.e1d500ca.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a38922b2.css",
-    "static/js/main.10f857dc.js"
+    "static/css/main.a2e3cbe0.css",
+    "static/js/main.cb58367f.js"
   ]
 }

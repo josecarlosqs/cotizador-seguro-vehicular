@@ -12,7 +12,8 @@ import {
 
 import Form from '../components/form'
 
-import character_mobile from '../assets/thankyou-character.svg';
+// import character_mobile from '../assets/thankyou-character.svg';
+// import character_desktop from '../assets/thankyou-character-desktop.svg';
 
 function Gracias() {
   const navigate = useNavigate()
@@ -44,14 +45,15 @@ function Gracias() {
   return (
     <div className='thankyou-screen'>
       <aside className='aside'>
-        <img alt='Gracias' src={character_mobile} />
       </aside>
       <main className='main'>
-        <h1 className='main__title'>¡Te damos la bienvenida!</h1>
-        <h2 className='main__subtitle'>Cuenta con nosotros para proteger tu vehículo</h2>
-        <p className='main__description'>Enviaremos la confirmación de compra de tu Plan Vehícular Tracking a tu correo:<br /><strong>{userState.data.email}</strong></p>
+        <div className='main__container'>
+          <h1 className='main__title'>¡Te damos la bienvenida!</h1>
+          <h2 className='main__subtitle'>Cuenta con nosotros para proteger tu vehículo</h2>
+          <p className='main__description'>Enviaremos la confirmación de compra de tu Plan Vehícular Tracking a tu correo:<br /><strong>{userState.data.email}</strong></p>
 
-        <Form.Button className='main__button'>CÓMO USAR MI SEGURO</Form.Button>
+          <Form.Button className='main__button'>CÓMO USAR MI SEGURO</Form.Button>
+        </div>
       </main>
     </div>
   );

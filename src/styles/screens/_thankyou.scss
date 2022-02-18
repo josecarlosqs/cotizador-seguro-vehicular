@@ -1,14 +1,21 @@
 .thankyou-screen {
   .aside {
-    img {
+    position: relative;
+    &:after {
+      content: '';
       display: block;
+      position: relative;
+      height: 100%;
       width: 100%;
-      height: auto;
+      background-image: url('../../assets/thankyou-character.svg');
+      padding-bottom: 57.778%;
+      background-size: cover;
     }
   }
 
   .main {
     padding: 48px $wrapper-mobile-padding;
+
     &__title {
       font-family: $lato;
       font-weight: normal;
@@ -45,5 +52,42 @@
     &__button {
       width: 100%;
     }
-  }  
+  }
+
+  
+  @media screen and (min-width: $mobile-breakpoint) {
+    display: grid;
+    grid-template-columns: 13fr 24fr;
+    height: 100%;
+    width: 100%;
+    max-width: $container-max-width;
+    margin: auto;
+
+    .aside {
+      &:after {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100vw;
+        top: 0;
+        right: 0;
+        background-image: url('../../assets/thankyou-character-desktop.svg');
+        padding-bottom: 0;
+        background-size: contain;
+        background-position: right;
+        background-repeat: no-repeat;
+        background-color: $bg-light;
+      }
+    }
+
+    .main {
+      // padding: 48px $wrapper-mobile-padding;
+  
+      &__container {
+        width: 100%;
+        max-width: 480px;
+        margin: auto;
+      }
+    }
+  }
 }

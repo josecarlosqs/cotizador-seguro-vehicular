@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.1e293c8b.css",
-    "main.js": "/static/js/main.0481bb08.js",
-    "static/js/787.e1d500ca.chunk.js": "/static/js/787.e1d500ca.chunk.js",
-    "static/media/home-character.svg": "/static/media/home-character.868b046cb009a7645d94791664cc67a5.svg",
-    "static/media/thankyou-character-desktop.svg": "/static/media/thankyou-character-desktop.a37849f8a7c89fc71e1f.svg",
-    "static/media/thankyou-character.svg": "/static/media/thankyou-character.8cd1006fae984e153d97.svg",
-    "static/media/background-home.png": "/static/media/background-home.2e315dc902311787a3fa.png",
-    "static/media/vehicle-details-character.svg": "/static/media/vehicle-details-character.37347c6e6d5a4b6222ce0cdc31971cc2.svg",
-    "index.html": "/index.html",
-    "static/media/icon_goback.svg": "/static/media/icon_goback.0e473d6de8397a5c0f10.svg",
-    "static/media/ic_check.svg": "/static/media/ic_check.7e44b5accf56bbac76410f1839e6fdc3.svg",
-    "static/media/ic_chevron.svg": "/static/media/ic_chevron.8fd5f9c46a5eae27b3f1eee00710928e.svg",
-    "static/media/ic-chevron-left.svg": "/static/media/ic-chevron-left.894008c78f58009f84af7e1588f63d62.svg",
-    "static/media/gl_arrow_up_red.svg": "/static/media/gl_arrow_up_red.01d9f971908c2d165264.svg",
-    "static/media/gl_arrow_down.svg": "/static/media/gl_arrow_down.b6be85aa47ffa2e2109e.svg",
-    "static/media/gl_arrow_up.svg": "/static/media/gl_arrow_up.dffe5915a60270a4b8e4.svg",
-    "main.1e293c8b.css.map": "/static/css/main.1e293c8b.css.map",
-    "main.0481bb08.js.map": "/static/js/main.0481bb08.js.map",
-    "787.e1d500ca.chunk.js.map": "/static/js/787.e1d500ca.chunk.js.map"
+    "main.css": "/cotizador-seguro-vehicular/static/css/main.a38922b2.css",
+    "main.js": "/cotizador-seguro-vehicular/static/js/main.f01ee437.js",
+    "static/js/787.e1d500ca.chunk.js": "/cotizador-seguro-vehicular/static/js/787.e1d500ca.chunk.js",
+    "static/media/home-character.svg": "/cotizador-seguro-vehicular/static/media/home-character.868b046cb009a7645d94791664cc67a5.svg",
+    "static/media/thankyou-character-desktop.svg": "/cotizador-seguro-vehicular/static/media/thankyou-character-desktop.a37849f8a7c89fc71e1f.svg",
+    "static/media/thankyou-character.svg": "/cotizador-seguro-vehicular/static/media/thankyou-character.8cd1006fae984e153d97.svg",
+    "static/media/background-home.png": "/cotizador-seguro-vehicular/static/media/background-home.2e315dc902311787a3fa.png",
+    "static/media/vehicle-details-character.svg": "/cotizador-seguro-vehicular/static/media/vehicle-details-character.37347c6e6d5a4b6222ce0cdc31971cc2.svg",
+    "index.html": "/cotizador-seguro-vehicular/index.html",
+    "static/media/icon_goback.svg": "/cotizador-seguro-vehicular/static/media/icon_goback.0e473d6de8397a5c0f10.svg",
+    "static/media/ic_check.svg": "/cotizador-seguro-vehicular/static/media/ic_check.7e44b5accf56bbac76410f1839e6fdc3.svg",
+    "static/media/ic_chevron.svg": "/cotizador-seguro-vehicular/static/media/ic_chevron.8fd5f9c46a5eae27b3f1eee00710928e.svg",
+    "static/media/ic-chevron-left.svg": "/cotizador-seguro-vehicular/static/media/ic-chevron-left.894008c78f58009f84af7e1588f63d62.svg",
+    "static/media/gl_arrow_up_red.svg": "/cotizador-seguro-vehicular/static/media/gl_arrow_up_red.01d9f971908c2d165264.svg",
+    "static/media/gl_arrow_down.svg": "/cotizador-seguro-vehicular/static/media/gl_arrow_down.b6be85aa47ffa2e2109e.svg",
+    "static/media/gl_arrow_up.svg": "/cotizador-seguro-vehicular/static/media/gl_arrow_up.dffe5915a60270a4b8e4.svg",
+    "main.a38922b2.css.map": "/cotizador-seguro-vehicular/static/css/main.a38922b2.css.map",
+    "main.f01ee437.js.map": "/cotizador-seguro-vehicular/static/js/main.f01ee437.js.map",
+    "787.e1d500ca.chunk.js.map": "/cotizador-seguro-vehicular/static/js/787.e1d500ca.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1e293c8b.css",
-    "static/js/main.0481bb08.js"
+    "static/css/main.a38922b2.css",
+    "static/js/main.f01ee437.js"
   ]
 }

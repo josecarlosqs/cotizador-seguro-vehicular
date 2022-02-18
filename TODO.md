@@ -1,3 +1,0 @@
-- Revisar ortografia
-- Iconos logo192.png, logo512.png, favicos.ico
-- Header desktop

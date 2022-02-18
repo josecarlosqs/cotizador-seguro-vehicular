@@ -98,7 +98,7 @@ class CoberturaListItem extends Component {
     return (
       <div className={'insurance-list-item' + (this.state.className ? ` ${this.state.className}` : '')}>
         <div className='insurance-list-item__icon'>
-          <img src={`/img/coberturas/cobertura_${this.props.itemData.id}.png`} alt={this.props.itemData.name} />
+          <img src={`${process.env.PUBLIC_URL}/img/coberturas/cobertura_${this.props.itemData.id}.png`} alt={this.props.itemData.name} />
         </div>
         <div className='insurance-list-item__content'>
           <input type='hidden' name={`insurance_item[${this.props.itemData.id}]`} value={ this.state.isSelected ? 'on' : 'off' } />

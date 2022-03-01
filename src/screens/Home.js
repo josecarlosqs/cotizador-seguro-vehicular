@@ -39,7 +39,7 @@ function Home() {
         }
       }
       case 'celular': return /^9[0-9]{8}$/.test(fieldValue);
-      case 'placa': return /^[a-z0-9]{6}$/.test(fieldValue);
+      case 'placa': return /^[a-zA-Z0-9\-]{6}$/.test(fieldValue);
       case 'tyc': return fieldValue === 'on';
       default:
     }
